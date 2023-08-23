@@ -1,0 +1,84 @@
+{
+  "NMD": [
+    {
+      "Plant": "ASP",
+      "mdesc": "WEWE",
+      "Equipment": "PK03",
+      "Type": "PLC",
+      "PartNo": "1756-L71",
+      "SAPCode": "200032323",
+      "InstalledQty": "3",
+      "Spares": "1"
+    },
+    {
+      "Plant": "ASP",
+      "mdesc": "sdsd",
+      "Equipment": "PK03",
+      "Type": "PLC",
+      "PartNo": "1756-L73",
+      "SAPCode": "200032323",
+      "InstalledQty": "6",
+      "Spares": "0"
+    },
+    {
+      "Plant": "ASP",
+      "mdesc": "sdsd",
+      "Equipment": "PK03",
+      "Type": "PLC",
+      "PartNo": "1756-L73",
+      "SAPCode": "200032323",
+      "InstalledQty": "2",
+      "Spares": "0"
+    },
+    {
+      "Plant": "EOEG",
+      "mdesc": "sldlsds",
+      "Equipment": "PK04",
+      "Type": "PLC",
+      "PartNo": "S7-400",
+      "SAPCode": "2323232323",
+      "InstalledQty": "2",
+      "Spares": "23"
+    },
+    {
+      "Plant": "EOEG",
+      "mdesc": "sds",
+      "Equipment": "PK04",
+      "Type": "PLC",
+      "PartNo": "S7-300",
+      "SAPCode": "687678",
+      "InstalledQty": "6",
+      "Spares": "678"
+    },
+    {
+      "Plant": "EOEG",
+      "mdesc": "sdd",
+      "Equipment": "PK03",
+      "Type": "IO",
+      "PartNo": "S7-300",
+      "SAPCode": "87979",
+      "InstalledQty": "7",
+      "Spares": "78"
+    },
+    {
+      "Plant": "GC",
+      "mdesc": "dsd",
+      "Equipment": "DCS",
+      "Type": "DCS",
+      "PartNo": "HPM",
+      "SAPCode": "2232323",
+      "InstalledQty": "13",
+      "Spares": "1"
+    },
+    {
+      "Plant": "GC",
+      "mdesc": "ds",
+      "Equipment": "DCS",
+      "Type": "DCS",
+      "PartNo": "HPM",
+      "SAPCode": "2323",
+      "InstalledQty": "2",
+      "Spares": "1"
+    }
+  ]
+}

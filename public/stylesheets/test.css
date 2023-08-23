@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+
+.container {
+    height: 200px;
+    position: relative;
+    border: 3px solid green;
+}
+
+#left {
+    background-color: #55c996;
+    height: 100%;
+    width: 30%;
+    display: inline-block;
+}
+
+#right{
+    background-color: whitesmoke;
+    display: inline-block;
+}

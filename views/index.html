@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/XMLhttpRequest.js"></script>
+    <script type="text/javascript" src="/javascripts/table.js"></script>
+
+    <!-- <script type="text/javascript" src="/javascripts/test.js"></script> -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
+    <title>DCS/PLC Install Database</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-wapper">
+            <div class="table-title">
+                <div class="row" style="padding: 15px; display: flex;">
+                    <div class="col-sm-8">
+                        <h2>DCS/PLC Install <b>Database</b></h2>
+                    </div>
+                    <div class="col-sm-4"><button type="button" class="btn btn-warning" id="logic">Reset</button></div>
+                    <div class="row-sm-4"><button type="button" class="btn btn-warning add-new"><i class="fa fa-plus"></i>Add New</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="fixTableHead" id="style-1">
+            <table id="mainTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Plant</th>
+                        <th>Part Description</th>
+                        <th>Equipment</th>
+                        <th>Type</th>
+                        <th>Part No</th>
+                        <th>SAP Code</th>
+                        <th>Installed Qty</th>
+                        <th>Spares</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="total"></div>
+        </div>
+    </div>
+    <!-- <div id="id01" class="modal">
+        <div class="modal-content animate">
+            <div id="total"></div>
+            <div class="modalcontainer" id="style-1">
+                <table id="modalTable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Plant</th>
+                            <th>Material Description</th>
+                            <th>Equipment</th>
+                            <th>Type</th>
+                            <th>Part No</th>
+                            <th>SAP Code</th>
+                            <th>Installed Qty</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+    </div> -->
+    
+    <script>
+        $.get("/data").done(function (data) {
+            console.log(data);
+            for (let i = 0; i < data.NMD.length; i++) {
+                $("#mainTable").append('<tr><td>' + data.NMD[i].Plant + '</td><td>' + data.NMD[i].mdesc + '</td><td><a href="#' + data.NMD[i].Equipment + '" class="search">' + data.NMD[i].Equipment + '</a></td><td><a href="#' + data.NMD[i].Type + '" class="search">' + data.NMD[i].Type + '</a></td><td><a href="#' + data.NMD[i].PartNo + '" class="search">' + data.NMD[i].PartNo + '</a></td><td><a href="#' + data.NMD[i].SAPCode + '" class="search">' + data.NMD[i].SAPCode + '</a></td><td>' + data.NMD[i].InstalledQty + '</td><td>' + data.NMD[i].Spares + '</td><td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr>');
+            }
+        });
+
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                var table = document.getElementById("modalTable");
+                while(table.rows.length > 1) {
+                    table.deleteRow(1); // Delete the row on clicking outside the model
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            $(document).on("click", ".search", function () {
+                var search = $(this).html();
+                var total = 0;
+                var table = document.getElementById("mainTable");
+                while(table.rows.length > 1) {
+                    table.deleteRow(1); // Delete the row on clicking outside the model
+                }
+                $.get("/data").done(function (data) {
+                    
+                    for (let i = 0; i < data.NMD.length; i++) {
+                        if(data.NMD[i].Equipment == search || data.NMD[i].Type == search || data.NMD[i].PartNo == search || data.NMD[i].SAPCode== search ){
+                            // $("#modalTable").append('<tr><td>' + data.NMD[i].Plant + '</td><td>' + data.NMD[i].mdesc + '</td><td>'+ data.NMD[i].Equipment +'</td><td>'+ data.NMD[i].Type +'</td><td>' + data.NMD[i].PartNo + '</td><td>' + data.NMD[i].SAPCode + '</td><td>' + data.NMD[i].InstalledQty + '</td></tr>');
+                            $("#mainTable").append('<tr><td>' + data.NMD[i].Plant + '</td><td>' + data.NMD[i].mdesc + '</td><td><a href="#' + data.NMD[i].Equipment + '" class="search">' + data.NMD[i].Equipment + '</a></td><td><a href="#' + data.NMD[i].Type + '" class="search">' + data.NMD[i].Type + '</a></td><td><a href="#' + data.NMD[i].PartNo + '" class="search">' + data.NMD[i].PartNo + '</a></td><td><a href="#' + data.NMD[i].SAPCode + '" class="search">' + data.NMD[i].SAPCode + '</a></td><td>' + data.NMD[i].InstalledQty + '</td><td>' + data.NMD[i].Spares + '</td><td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr>');
+                            total+=parseInt(data.NMD[i].InstalledQty);
+                        }
+                    }
+                    console.log(total);
+                    document.getElementById("total").innerHTML = 'Total Installed Qty:'+total;
+                });
+                
+                document.getElementById('id01').style.display = 'block';
+            });
+
+
+            $(document).on("click", "#logic", function () {
+                document.getElementById("total").innerHTML = '';
+                var table = document.getElementById("mainTable");
+                while(table.rows.length > 1) {
+                    table.deleteRow(1); // Delete the row on clicking outside the model
+                }
+                $.get("/data").done(function (data) {
+                    console.log(data);
+                    for (let i = 0; i < data.NMD.length; i++) {
+                        $("#mainTable").append('<tr><td>' + data.NMD[i].Plant + '</td><td>' + data.NMD[i].mdesc + '</td><td><a href="#' + data.NMD[i].Equipment + '" class="search">' + data.NMD[i].Equipment + '</a></td><td><a href="#' + data.NMD[i].Type + '" class="search">' + data.NMD[i].Type + '</a></td><td><a href="#' + data.NMD[i].PartNo + '" class="search">' + data.NMD[i].PartNo + '</a></td><td><a href="#' + data.NMD[i].SAPCode + '" class="search">' + data.NMD[i].SAPCode + '</a></td><td>' + data.NMD[i].InstalledQty + '</td><td>' + data.NMD[i].Spares + '</td><td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a><a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td></tr>');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+p -> property
+e-> error object
+
+e is an object (likely representing a module or some data structure).
+t is a string, which is likely a key or property name.

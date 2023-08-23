@@ -1,0 +1,484 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bootstrap Treeview Example</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"
+        rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/tree.js"></script>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 10px; width: 100%;display: inline-block;">
+        <div class="col-sm-3" style="margin: 5px; padding: 5px;">
+            <div id="myTree"></div>
+        </div>
+        <div class="col-sm-8" style="background-color:aqua; width: fit-content; height: fit-content;">
+            
+            <object data="PDF/print.pdf" width="885" height="570"></object>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var treeData = [
+                {
+                    text: "NMD",
+                    nodes: [
+                        {
+                            text: "ASP",
+                            nodes: [
+                                {
+                                    text: "CHAIN#1"
+                                },
+                                {
+                                    text: "CHAIN#2"
+                                },
+                                {
+                                    text: "CHAIN#3"
+                                },
+                                {
+                                    text: "SCAUT#1"
+                                },
+                                {
+                                    text: "SCAUT#2"
+                                },
+                                {
+                                    text: "SCAUT#3"
+                                },
+                                {
+                                    text: "K05"
+                                },
+                                {
+                                    text: "N2O2"
+                                },
+                            ]
+                        },
+                        {
+                            text: "EOEG",
+                            nodes: [
+                                {
+                                    text: "PK03"
+                                },
+                                {
+                                    text: "PK04"
+                                },
+                                {
+                                    text: "PLC1"
+                                },
+                                {
+                                    text: "PLC2"
+                                }
+                            ]
+                        },
+                        {
+                            text: "GAS CRACKER",
+                            nodes: [
+                                {
+                                    text: "PSA"
+                                },
+                                {
+                                    text: "SAFETY MANAGER-1"
+                                },
+                                {
+                                    text: "SAFETY MANAGER-2"
+                                },
+                                {
+                                    text: "FSC"
+                                },
+                            ]
+                        },
+                        {
+                            text: "CPP",
+                            nodes: [
+                                {
+                                    text: "DCS"
+                                },
+                                {
+                                    text: "GTG50"
+                                },
+                                {
+                                    text: "GTG51"
+                                },
+                                {
+                                    text: "GTG52"
+                                },
+                                {
+                                    text: "BMS1"
+                                },
+                                {
+                                    text: "BMS2"
+                                },
+                                {
+                                    text: "BMS3"
+                                },
+                                {
+                                    text: "STG"
+                                },
+                            ]
+                        },
+                        {
+                            text: "LDPE",
+                            nodes: [
+                                {
+                                    text:  "DCS"
+                                },
+                                {
+                                    text:  "ESD"
+                                },
+                                {
+                                    text:  "VAR-A"
+                                },
+                                {
+                                    text:  "VAR-B"
+                                },
+                                {
+                                    text:  "BAGGING-A"
+                                },
+                                {
+                                    text:  "BAGGING-B"
+                                },
+                                {
+                                    text:  "PALLETIZER-A"
+                                },
+                                {
+                                    text:  "PALLETIZER-B"
+                                },
+                                
+
+                            
+                            ]
+                        },
+                        {
+                            text: "LLDPE",
+                            nodes: [
+                                {
+                                    text:  "ESD1"
+                                },
+                                {
+                                    text:  "ESD2"
+                                },
+                                {
+                                    text:  "ESD COMMON"
+                                },
+                                {
+                                    text:  "BOOSTER COMP"
+                                },
+                                {
+                                    text:  "EXTRUDER4"
+                                },
+                                {
+                                    text:  "EXTRUDER1"
+                                },
+                                {
+                                    text:  "EXTRUDER2"
+                                },
+                                {
+                                    text:  "EXTRUDER3"
+                                },
+                                {
+                                    text:  "BAGGING-A"
+                                },
+                                {
+                                    text:  "BAGGING-B"
+                                },
+                                {
+                                    text:  "PALLETIZER-A"
+                                },
+                                {
+                                    text:  "PALLETIZER-B"
+                                },
+                                {
+                                    text:  "JUMBO BAGGING"
+                                },
+                            
+                            ]
+                        },
+                        {
+                            text: "PP",
+                            nodes: [
+                                {
+                                    text:  "DCS"
+                                },
+                                {
+                                    text:  "ESD"
+                                },
+                                {
+                                    text:  "EXTRUDER"
+                                },
+                                {
+                                    text:  "CONVEYING"
+                                },
+                                {
+                                    text:  "BAGGING-A"
+                                },
+                                {
+                                    text:  "BAGGING-B"
+                                },
+                                {
+                                    text:  "PALLETIZING-A"
+                                },
+                                {
+                                    text:  "PALLETIZING-B"
+                                },
+                                {
+                                    text:  "FUNKEN"
+                                },
+                                {
+                                    text:  "HYDROGEN BULLET"
+                                },
+
+                            
+                            ]
+                        },
+                        {
+                            text: "RPET",
+                            nodes: [
+                                {
+                                    text:  "DRYER"
+                                },
+                                {
+                                    text:  "DRYER"
+                                },
+                            
+                            ]
+                        },
+                        {
+                            text: "TANK FARM",
+                            nodes: [
+                                {
+                                    text:  "ESD"
+                                }
+                            
+                            ]
+                        },
+                        {
+                            text: "COMP HOUSE",
+                            nodes: [
+                                {
+                                    text:  "DRYER-1"
+                                },
+                                {
+                                    text:  "DRYER-2"
+                                },
+                                {
+                                    text:  "DRYER-3"
+                                },
+                                {
+                                    text:  "K01"
+                                },
+                                {
+                                    text:  "K03"
+                                },
+                            
+                            ]
+                        },
+                        {
+                            text: "DM WATER",
+                            nodes: [
+                                {
+                                    text:  "ESD"
+                                }
+                            
+                            ]
+                        },
+                        {
+                            text: "IWWTP",
+                            nodes: [
+                                {
+                                    text:  "ESD"
+                                }
+                            
+                            ]
+                        },
+                        {
+                            text: "UFRO",
+                            nodes: [
+                                {
+                                    text:  "ESD"
+                                }
+                            
+                            ]
+                        },
+                    ]
+                }
+            ];
+            $('#myTree').treeview({
+                data: treeData
+            });
+        });
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/dcsplc.css">
+
+</head>
+
+<body>
+    <div class="container" id="clearflex">
+        <div class="sidenav">
+            <button class="dropdown-btn">ASP
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#chain1">CHAIN#1</a>
+                <a href="#chain2">CHAIN#2</a>
+                <a href="#chain3">CHAIN#3</a>
+                <a href="#scaut1">SCAUT#1</a>
+                <a href="#scaut2">SCAUT#2</a>
+                <a href="#scaut3">SCAUT#3</a>
+                <a href="#K01">K01</a>
+                <a href="#K03">K03</a>
+                <a href="#K05">K05</a>
+                <a href="#N2O2">N2O2</a>
+
+            </div>
+            <button class="dropdown-btn">GAS CRACKER
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#PSA">PSA</a>
+                <a href="#SM1">SAFETY MANAGER 1</a>
+                <a href="#SM2">SAFETY MANAGER 2</a>
+                <a href="#FSC">FSC</a>
+            </div>
+            <button class="dropdown-btn">EOEG
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#PK03">PLC1</a>
+                <a href="#PK03">PLC2</a>
+                <a href="#PK03">PK03</a>
+                <a href="#PK04">PK04</a>
+            </div>
+            <button class="dropdown-btn">PP
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#ESD">ESD</a>
+                <a href="#EXTRUDER">EXTRUDER</a>
+                <a href="#CONVEYING">CONVEYING</a>
+                <a href="#FUNKEN">FUNKEN</a>
+            </div>
+            <button class="dropdown-btn">LDPE
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#LDPEESD">ESD</a>
+                <a href="#ANN">ANNOUNCIATOR</a>
+                <a href="#VARA">VAR-A</a>
+                <a href="#VARB">VAR-B</a>
+                <a href="#VSDCUTTER">VSD-CUTTER</a>
+            </div>
+            <button class="dropdown-btn">LLDPE
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#ESD1">ESD1</a>
+                <a href="#ESD2">ESD2</a>
+                <a href="#BOOSTER">BOOSTER</a>
+                <a href="#EXTRUDER1">EXTRUDER1</a>
+                <a href="#EXTRUDER2">EXTRUDER2</a>
+                <a href="#EXTRUDER3">EXTRUDER3</a>
+                <a href="#EXTRUDER4">EXTRUDER4</a>
+                <a href="#TR1INJ">TR1-INJ</a>
+                <a href="#TR2INJ">TR2-INJ</a>
+                <a href="#services">VSD-CUTTER</a>
+            </div>
+            <button class="dropdown-btn">CPP
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#services">BMS1</a>
+                <a href="#services">BMS2</a>
+                <a href="#services">BMS3</a>
+                <a href="#services">STG1</a>
+                <a href="#services">STG2</a>
+            </div>
+            <button class="dropdown-btn">ONU
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <button class="dropdown-btn">COMPRESSOR HOUSE
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#services">K01</a>
+                    <a href="#services">K03</a>
+                    <a href="#services">DRYER1</a>
+                    <a href="#services">DRYER2</a>
+                    <a href="#services">DRYER3</a>
+                </div>
+                <a href="#services">TF</a>
+                <a href="#services">DM WATER</a>
+                <a href="#services">FW/RW</a>
+                <a href="#services">IWWTP</a>
+                <a href="#services">UFRO</a>
+            </div>
+            <button class="dropdown-btn">BAGGING
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <button class="dropdown-btn">LDPE
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#services">BAGGING-A</a>
+                    <a href="#services">BAGGING-B</a>
+                    <a href="#services">PALLETIZER-A</a>
+                    <a href="#services">PALLETIZER-B</a>
+                </div>
+                <button class="dropdown-btn">LLDPE
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#services">BAGGING-A</a>
+                    <a href="#services">BAGGING-B</a>
+                    <a href="#services">PALLETIZER-A</a>
+                    <a href="#services">PALLETIZER-B</a>
+                    <a href="#services">JUMBO-BAGGING</a>
+                </div>
+                <button class="dropdown-btn">PP
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#services">BAGGING-A</a>
+                    <a href="#services">BAGGING-B</a>
+                    <a href="#services">PALLETIZER-A</a>
+                    <a href="#services">PALLETIZER-B</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="pdf">
+            <!-- <object data="PDF/print.pdf" width="1090" height="570"></object> -->
+            <!-- <object id="pdf" data="" width="1090" height="570"></object> -->
+            <object id="pdf" standby="loading data" data="" width="1090" height="570"></object>
+            
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="/javascripts/tree.js"></script>
+</body>
+
+</html>
