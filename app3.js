@@ -11,15 +11,15 @@ app.use(express.static('./public')) // This line is used for declaring the home 
 app.use(express.json()); // This code required to accept data in json format 
 
 
-
-
-
-
 app.get('/',function(req,res){
     // res.sendFile(__dirname+'/views/excel2json.html');
     res.sendFile(__dirname+'/views/test.html');
 });
 
+app.get('/',function(req,res){
+    // res.sendFile(__dirname+'/views/excel2json.html');
+    res.sendFile(__dirname+'/views/test.html');
+});
 
 app.listen(port,function(req,res){
     console.log('Server is running on:'+port); // express server listening on port no 3000
