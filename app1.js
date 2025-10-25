@@ -41,7 +41,7 @@ app.get('/images/refinery.jpg', function (req, res) {
 app.post('/auth', function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  if (username == "nmdinst" && password == "inst") {
+  if (username == "experionadmin" && password == "mngr1") {
     res.redirect('/home');
   } else {
     res.end();
