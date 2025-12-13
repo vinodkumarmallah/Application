@@ -1,15 +1,12 @@
-function onScanSuccess(decodedText, decodedResult) {
+const html5QrCode = new Html5Qrcode("reader");
+
+html5QrCode.start(
+  { facingMode: "environment" }, // use back camera
+  { fps: 10, qrbox: 250 },
+  (decodedText, decodedResult) => {
     document.getElementById("result").innerText = decodedText;
-    console.log(`Code scanned = ${decodedText}`, decodedResult);
-}
-
-function onScanFailure(error) {
-    console.warn(`Scan error = ${error}`);
-}
-
-let html5QrCodeScanner = new Html5QrcodeScanner(
-    "reader", 
-    { fps: 10, qrbox: 250 }
+  },
+  (errorMessage) => {
+    console.warn("QR error:", errorMessage);
+  }
 );
-
-html5QrCodeScanner.render(onScanSuccess, onScanFailure);
